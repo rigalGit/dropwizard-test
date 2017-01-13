@@ -1,0 +1,34 @@
+name : test-app
+
+
+
+server:
+  applicationConnectors:
+  - type: http
+    port: 9090
+    idleTimeout: 30 seconds
+    acceptorThreads: 1
+    selectorThreads: 2
+    useServerHeader: true
+    useDateHeader: true
+  adminConnectors:
+  - type: http
+    port: 9091
+    idleTimeout: 30 seconds
+    acceptorThreads: 1
+    selectorThreads: 2
+    useServerHeader: true
+    useDateHeader: true
+
+  requestLog:
+    enabled: true
+    appenders:
+      - type: console
+        logFormat: "%I %l %u [%date]  [%reqAttribute{id}] "
+
+logging:
+  level: INFO
+  appenders:
+    - type: console
+      logFormat: "%date %highlight(%-5level) [%thread] %cyan(%logger{10}) [%X{id}] %msg%n"
+
