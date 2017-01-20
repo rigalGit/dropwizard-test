@@ -25,6 +25,7 @@ public class TestResource {
         logger.info("testMap called ");
         Map<String,String> map = new HashMap<String, String>();
         map.put("abc","def");
+        System.out.println("sout map = " + map);
         logger.info("returning response :: "+map);
         return map;
     }
@@ -36,6 +37,7 @@ public class TestResource {
         logger.info("testMap2 called ");
         Map<String,String> map = new HashMap<String, String>();
         map.put("abc2","def2");
+        System.out.println("soutv2 map = " + map);
         return map;
     }
 }
