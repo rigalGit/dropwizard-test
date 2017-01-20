@@ -23,12 +23,21 @@ server:
   requestLog:
     enabled: true
     appenders:
-      - type: console
-        logFormat: "%I %l %u [%date]  [%reqAttribute{id}] "
+      - type: file
+        currentLogFilename: /var/log/dropwizard-test/requests.log
+        archivedLogFilenamePattern: /var/log/dropwizard-test/requests-%d{yyyy-MM-dd}.log.gz
+        timeZone: IST
 
 logging:
+  loggers:
+    org.glassfish.jersey.filter.LoggingFilter: INFO
   level: INFO
   appenders:
-    - type: console
-      logFormat: "%date %highlight(%-5level) [%thread] %cyan(%logger{10}) [%X{id}] %msg%n"
-
+    - type: file
+      timeZone: IST
+      logFormat: "%date %level [%thread] %logger{10} [%X{id}] %msg%n"
+      queueSize: 2048
+      currentLogFilename: /var/log/dropwizard-test/app.log
+      archive: true
+      archivedLogFilenamePattern: /var/log/dropwizard-test/app-%d{yyyy-MM-dd}.log.gz
+      archivedFileCount: 10

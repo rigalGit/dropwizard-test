@@ -10,7 +10,7 @@ public class TestApplication extends Application<TestConfig> {
     public void run(TestConfig configuration, Environment environment) throws Exception {
         TestResource testResource = new TestResource();
         environment.jersey().register(testResource);
-        environment.jersey().register(RequestFilter.class);
+        environment.jersey().register(new RequestFilter());
     }
 
     public static void main(String[] args) throws Exception {

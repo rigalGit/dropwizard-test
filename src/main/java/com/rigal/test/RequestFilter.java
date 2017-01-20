@@ -6,12 +6,14 @@ import org.slf4j.MDC;
 
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
+import javax.ws.rs.ext.Provider;
 import java.io.IOException;
 import java.util.UUID;
 
 /**
  * Created by jitendragangwar on 1/13/17.
  */
+@Provider
 public class RequestFilter implements ContainerRequestFilter {
     private static Logger logger = LoggerFactory.getLogger(RequestFilter.class);
 

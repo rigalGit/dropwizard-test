@@ -1,6 +1,8 @@
 package com.rigal.test;
 
 import com.codahale.metrics.annotation.Timed;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -16,11 +18,14 @@ import java.util.Map;
 @Path("/test")
 @Produces(MediaType.APPLICATION_JSON)
 public class TestResource {
+    private static final Logger logger = LoggerFactory.getLogger(TestResource.class);
     @GET
     @Timed
     public Map testMap(){
+        logger.info("testMap called ");
         Map<String,String> map = new HashMap<String, String>();
         map.put("abc","def");
+        logger.info("returning response :: "+map);
         return map;
     }
 
@@ -28,6 +33,7 @@ public class TestResource {
     @Path("/test2")
     @Timed
     public Map testMap2(){
+        logger.info("testMap2 called ");
         Map<String,String> map = new HashMap<String, String>();
         map.put("abc2","def2");
         return map;
